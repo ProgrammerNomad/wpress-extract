@@ -30,7 +30,7 @@ wpress-extract <input.wpress> [options]
 
 **Options:**
 
-  - `-o, --out <directory>`:  Specify the output directory where the contents of the archive will be extracted. If not specified, a directory with the same name as the input file (without the `.wpress` extension) will be created in the same directory as the input file.
+  - `-o, --out <directory>`: Specify the output directory where the contents of the archive will be extracted. If not specified, a directory with the same name as the input file (without the `.wpress` extension) will be created in the same directory as the input file.
   - `-f, --force`: Override the output directory if it already exists. **Use with caution\!**
   - `-h, --help`: Display help information.
 
@@ -74,16 +74,16 @@ Error: Output dir is not empty. Clear it first or use the --force option to over
 
 ## Contributing
 
-Contributions are welcome\! Please feel free to submit issues or pull requests.
+Contributions are welcome\! Please feel free to submit issues or pull requests to the repository: [https://github.com/ProgrammerNomad/wpress-extract](https://github.com/ProgrammerNomad/wpress-extract)
 
 ## Contributors
 
-  - [Felix Haus](https://felix.house)
-  - [Shiv Singh](https://github.com/ProgrammerNomad/wpress-extract)
+  - [https://github.com/ofhouse](https://github.com/ofhouse)
+  - [https://github.com/ProgrammerNomad](https://github.com/ProgrammerNomad)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/url?sa=E&source=gmail&q=LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/url?sa=E&source=gmail&q=https://www.google.com/url?sa=E%26source=gmail%26q=LICENSE) file for details.
 
 ## Notes
 
@@ -96,7 +96,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://www.g
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/ofhouse/wpress-extract.git](https://github.com/ofhouse/wpress-extract.git)
+    git clone [https://github.com/ProgrammerNomad/wpress-extract](https://github.com/ProgrammerNomad/wpress-extract)
     ```
 2.  Install dependencies:
     ```bash
@@ -123,25 +123,14 @@ If you want to build the executable from the source:
 
 ```
 
-**Explanation of Sections:**
+**Key Changes:**
 
--   **Header:**  Project name, description, and license badge.
--   **Features:** Highlights the key features of the tool.
--   **Installation:**  Instructions on how to install the package using npm.
--   **Usage:**  Explains how to use the CLI, including arguments, options, and examples.
--   **Progress Display:** Shows how the progress bar will look.
--   **Error Handling:** Describes how errors are handled and displayed.
--   **Contributing:** Encourages contributions and links to issues/PRs.
--   **Contributors:** Lists the project contributors with links to their profiles (update with actual contributor details).
--   **License:** Specifies the project's license and links to the LICENSE file.
--   **Notes:**  Includes any disclaimers or important information.
--   **Development:** (Added) Provides instructions for developers who want to contribute to or build the project.
+-   **Repository Links:** All links to the repository (in the header, Contributing section, and Development section) have been updated to point to the forked repository: [https://github.com/ProgrammerNomad/wpress-extract](https://github.com/ProgrammerNomad/wpress-extract).
+-   **Contributor:** Updated to reflect new fork and its owner
 
 **Before Using:**
 
-1.  **Replace Placeholders:** Update the following in the README:
-    -   Contributor names and links.
-    -   Copyright notice in the `epilog` of `cli.js` (if applicable).
-    -   License file (if not MIT, update the badge and file).
-2.  **Create LICENSE File:** If you haven't already, create a `LICENSE` file in the root of your project and paste the full text of the MIT license (or the license you've chosen) into it.
-3.  **Test:**  Thoroughly test the tool to make sure everything works as expected.
+1.  **Replace Placeholders:**
+    -   Update the `Copyright` notice in the `epilog` of `cli.js` to reflect the fork owner if needed.
+    -   The `LICENSE` file should be correct if you have not modified it in the fork.
+2.  **Test:** Thoroughly test the tool from the forked repository to make sure everything works as expected.
