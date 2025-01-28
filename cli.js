@@ -8,91 +8,91 @@ const cliProgress = require('cli-progress');
 const wpExtract = require('./lib/wpress-extract');
 
 async function main({ inputFile, outputDir, override }) {
-  const progressBar = new cliProgress.SingleBar(
-    {
-      format: 'Progress: {bar} | {percentage}%',
-    },
-    cliProgress.Presets.shades_classic
-  );
-
-  const onStart = (totalSize) => {
-    console.log(
-      `Extracting content to: ${path.relative(process.cwd(), outputDir)}/`
+    const progressBar = new cliProgress.SingleBar(
+        {
+            format: 'Progress: {bar} | {percentage}%',
+            hideCursor: true, // Hide cursor during progress
+        },
+        cliProgress.Presets.shades_classic
     );
 
-    // Initialize progressbar
-    progressBar.start(totalSize, 0);
-  };
+    const onStart = (totalSize) => {
+        console.log(
+            `Extracting content to: ${path.relative(process.cwd(), outputDir)}/`
+        );
 
-  const onUpdate = (value) => {
-    progressBar.update(value);
-  };
+        progressBar.start(totalSize, 0);
+    };
 
-  let totalFiles = 0;
-  let success = false;
-  const onFinish = (_totalFiles) => {
-    totalFiles = _totalFiles;
-    success = true;
-    // Set the progress bar to 100% and stop
-    progressBar.update(progressBar.getTotal());
-  };
+    const onUpdate = (value) => {
+        progressBar.update(value);
+    };
 
-  try {
-    await wpExtract({
-      inputFile,
-      outputDir,
-      onStart,
-      onUpdate,
-      onFinish,
-    });
-  } catch (error) {
-    progressBar.stop();
-    console.error('Error: ', error.message);
-  } finally {
-    progressBar.stop();
+    let totalFiles = 0;
+    const onFinish = (_totalFiles) => {
+        totalFiles = _totalFiles;
+        progressBar.update(progressBar.getTotal());
+        progressBar.stop(); // Stop after reaching 100%
+        console.log();
+        console.log(`Successfully extracted ${totalFiles} files.`);
+    };
 
-    if (success) {
-      console.log();
-      console.log(`Successfully extracted ${totalFiles} files.`);
+    try {
+        await wpExtract({
+            inputFile,
+            outputDir,
+            onStart,
+            onUpdate,
+            onFinish,
+            override,
+        });
+    } catch (error) {
+        progressBar.stop();
+        console.error('\nError: ', error.message); // Add a new line for better visibility
     }
-  }
 }
 
-yargs(hideBin(process.argv)).command(
-  '$0 <input>',
-  'Extract a .wpress archive',
-  (_yargs) => {
-    _yargs
-      .positional('input', {
-        describe: 'Path to the .wpress archive you want to extract',
-        type: 'string',
-      })
-      .option('o', {
-        alias: 'out',
-        describe: 'Directory where the content should be extracted to',
-        type: 'string',
-      })
-      .option('f', {
-        alias: 'force',
-        describe: 'override existing directory',
-        type: 'boolean',
-      });
-  },
-  (argv) => {
-    const override = !!argv.force;
-    const inputFile = path.resolve(process.cwd(), argv.input);
-
-    let outputDir =
-      typeof argv.out === 'string'
-        ? path.resolve(process.cwd(), argv.out)
-        : undefined;
-    if (!outputDir) {
-      // Generate the output dirname from the the input file
-      const extension = path.extname(inputFile);
-      const dirName = path.basename(inputFile, extension);
-      outputDir = path.join(process.cwd(), dirName);
-    }
-
-    return main({ inputFile, outputDir, override });
-  }
-).argv;
+yargs(hideBin(process.argv))
+    .scriptName("wpress-extract") // Set a custom script name (optional)
+    .command(
+        '$0 <input>',
+        'Extract a .wpress archive',
+        (_yargs) => {
+            _yargs
+                .positional('input', {
+                    describe: 'Path to the .wpress archive you want to extract',
+                    type: 'string',
+                    coerce: path.resolve, // Automatically resolve the path
+                })
+                .option('o', {
+                    alias: 'out',
+                    describe: 'Directory where the content should be extracted to',
+                    type: 'string',
+                    coerce: path.resolve,
+                })
+                .option('f', {
+                    alias: 'force',
+                    describe: 'Override existing directory',
+                    type: 'boolean',
+                    default: false, // Default to false
+                })
+                .demandOption(
+                    'input',
+                    'Please provide the input .wpress archive path'
+                );
+        },
+        (argv) => {
+            const { input: inputFile, out: outputDir, force: override } = argv;
+            return main({
+                inputFile,
+                outputDir: outputDir || path.join(path.dirname(inputFile), path.basename(inputFile, path.extname(inputFile))),
+                override,
+            });
+        }
+    )
+    .usage('Usage: $0 <input> [options]') // Add a usage message
+    .example('$0 backup.wpress -o extracted', 'Extract backup.wpress to the "extracted" directory')
+    .help('h')
+    .alias('h', 'help')
+    .epilog('Copyright (c) 2023 - [Your Name or Company Name]') // Add a copyright notice (optional)
+    .argv;
