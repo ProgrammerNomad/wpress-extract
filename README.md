@@ -118,19 +118,3 @@ If you want to build the executable from the source:
 2.  Clone this repository.
 3.  Install dependencies: `npm install`
 4.  Run the CLI directly using Node.js: `node cli.js <input.wpress> [options]`
-
-<!-- end list -->
-
-```
-
-**Key Changes:**
-
--   **Repository Links:** All links to the repository (in the header, Contributing section, and Development section) have been updated to point to the forked repository: [https://github.com/ProgrammerNomad/wpress-extract](https://github.com/ProgrammerNomad/wpress-extract).
--   **Contributor:** Updated to reflect new fork and its owner
-
-**Before Using:**
-
-1.  **Replace Placeholders:**
-    -   Update the `Copyright` notice in the `epilog` of `cli.js` to reflect the fork owner if needed.
-    -   The `LICENSE` file should be correct if you have not modified it in the fork.
-2.  **Test:** Thoroughly test the tool from the forked repository to make sure everything works as expected.
