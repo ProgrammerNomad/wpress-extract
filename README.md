@@ -1,4 +1,4 @@
-# wpress-extract
+# wpress-extract2
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -15,13 +15,13 @@ A simple command-line interface (CLI) tool for extracting `.wpress` archive file
 ## Installation
 
 ```bash
-npm install wpress-extract
+npm install wpress-extract2
 ````
 
 ## Usage
 
 ```bash
-wpress-extract <input.wpress> [options]
+wpress-extract2 <input.wpress> [options]
 ```
 
 **Arguments:**
@@ -39,19 +39,19 @@ wpress-extract <input.wpress> [options]
   - Extract `backup.wpress` to a new directory named `backup`:
 
     ```bash
-    wpress-extract backup.wpress
+    wpress-extract2 backup.wpress
     ```
 
   - Extract `my-site.wpress` to a specific directory `/path/to/output`:
 
     ```bash
-    wpress-extract my-site.wpress -o /path/to/output
+    wpress-extract2 my-site.wpress -o /path/to/output
     ```
 
   - Extract `data.wpress` to an existing directory `my-data` and override its contents:
 
     ```bash
-    wpress-extract data.wpress -o my-data -f
+    wpress-extract2 data.wpress -o my-data -f
     ```
 
 ## Progress Display
@@ -74,7 +74,7 @@ Error: Output dir is not empty. Clear it first or use the --force option to over
 
 ## Contributing
 
-Contributions are welcome\! Please feel free to submit issues or pull requests to the repository: [https://github.com/ProgrammerNomad/wpress-extract](https://github.com/ProgrammerNomad/wpress-extract)
+Contributions are welcome\! Please feel free to submit issues or pull requests to the repository: [https://github.com/ProgrammerNomad/wpress-extract2](https://www.google.com/url?sa=E&source=gmail&q=https://github.com/ProgrammerNomad/wpress-extract2)
 
 ## Contributors
 
@@ -83,7 +83,7 @@ Contributions are welcome\! Please feel free to submit issues or pull requests t
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/url?sa=E&source=gmail&q=https://www.google.com/url?sa=E%26source=gmail%26q=LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/url?sa=E&source=gmail&q=LICENSE) file for details.
 
 ## Notes
 
@@ -95,10 +95,13 @@ This project is licensed under the MIT License - see the [LICENSE](https://www.g
 ### Getting Started
 
 1.  Clone the repository:
+
     ```bash
-    git clone [https://github.com/ProgrammerNomad/wpress-extract](https://github.com/ProgrammerNomad/wpress-extract)
+    git clone [https://github.com/ProgrammerNomad/wpress-extract2](https://github.com/ProgrammerNomad/wpress-extract2)
     ```
+
 2.  Install dependencies:
+
     ```bash
     npm install
     ```
