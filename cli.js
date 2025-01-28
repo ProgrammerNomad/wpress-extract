@@ -99,5 +99,5 @@ yargs(hideBin(process.argv))
   )
   .help('h')
   .alias('h', 'help')
-  .epilog('Copyright (c) 2023 - [Your Name or Company Name]')
+  .epilog('Updated at 2025 - Shiv Singh')
   .argv;
